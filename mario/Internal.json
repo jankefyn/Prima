@@ -1,1 +1,250 @@
-{}
+{
+  "Graph|2022-10-11T14:25:08.986Z|40842": {
+    "ƒ.Graph": {
+      "name": "Level",
+      "active": true,
+      "components": {
+        "ComponentLight": [
+          {
+            "ƒ.ComponentLight": {
+              "pivot": {
+                "translation": "[0, 0, 0]",
+                "rotation": "[0, 0, 0]",
+                "scaling": "[1, 1, 1]"
+              },
+              "light": {
+                "ƒ.LightAmbient": {
+                  "color": "[1, 1, 1, 1]"
+                }
+              },
+              "Component": {
+                "active": true
+              }
+            }
+          }
+        ]
+      },
+      "children": [
+        {
+          "ƒ.GraphInstance": {
+            "deserializeFromSource": true,
+            "name": "questionblock",
+            "idSource": "Graph|2022-10-11T14:29:13.801Z|58395"
+          }
+        },
+        {
+          "ƒ.GraphInstance": {
+            "deserializeFromSource": true,
+            "name": "bricks",
+            "idSource": "Graph|2022-10-11T14:44:31.383Z|80421"
+          }
+        }
+      ],
+      "idResource": "Graph|2022-10-11T14:25:08.986Z|40842",
+      "type": "Graph"
+    }
+  },
+  "MeshCube|2022-10-11T14:25:31.393Z|79785": {
+    "ƒ.MeshCube": {
+      "idResource": "MeshCube|2022-10-11T14:25:31.393Z|79785",
+      "name": "MeshCube",
+      "type": "MeshCube"
+    }
+  },
+  "Material|2022-10-11T14:25:37.569Z|22071": {
+    "ƒ.Material": {
+      "name": "ShaderFlat",
+      "idResource": "Material|2022-10-11T14:25:37.569Z|22071",
+      "shader": "ShaderFlat",
+      "coat": {
+        "ƒ.CoatRemissive": {
+          "color": "[1, 1, 1, 1]",
+          "diffuse": 1,
+          "specular": 0
+        }
+      }
+    }
+  },
+  "Material|2022-10-11T14:32:42.672Z|70007": {
+    "ƒ.Material": {
+      "name": "question",
+      "idResource": "Material|2022-10-11T14:32:42.672Z|70007",
+      "shader": "ShaderFlatTextured",
+      "coat": {
+        "ƒ.CoatRemissiveTextured": {
+          "color": "[1, 1, 1, 1]",
+          "idTexture": "TextureImage|2022-10-11T14:38:23.609Z|79092",
+          "diffuse": 1,
+          "specular": 0
+        }
+      }
+    }
+  },
+  "TextureImage|2022-10-11T14:38:23.609Z|79092": {
+    "ƒ.TextureImage": {
+      "url": "Texturen/itemblock_texture.jpg",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2022-10-11T14:38:23.609Z|79092",
+        "name": "itemblock_texture.jpg",
+        "mipmap": "CRISP"
+      }
+    }
+  },
+  "Graph|2022-10-11T14:29:13.801Z|58395": {
+    "ƒ.Graph": {
+      "name": "questionblock",
+      "active": true,
+      "components": {
+        "ComponentMesh": [
+          {
+            "ƒ.ComponentMesh": {
+              "idMesh": "MeshCube|2022-10-11T14:25:31.393Z|79785",
+              "pivot": {
+                "translation": "[3, 3, 0]",
+                "rotation": "[0, 0, 0]",
+                "scaling": "[1, 1, 1]"
+              },
+              "Component": {
+                "active": true
+              }
+            }
+          }
+        ],
+        "ComponentMaterial": [
+          {
+            "ƒ.ComponentMaterial": {
+              "sortForAlpha": false,
+              "clrPrimary": "[1, 1, 1, 1]",
+              "clrSecondary": "[1, 1, 1, 1]",
+              "pivot": {
+                "translation": "[0, 0]",
+                "rotation": 0,
+                "scaling": "[1, 1]"
+              },
+              "Component": {
+                "active": true
+              },
+              "idMaterial": "Material|2022-10-11T14:32:42.672Z|70007"
+            }
+          }
+        ]
+      },
+      "children": [],
+      "idResource": "Graph|2022-10-11T14:29:13.801Z|58395",
+      "type": "Graph"
+    }
+  },
+  "MeshQuad|2022-10-11T14:29:27.368Z|20770": {
+    "ƒ.MeshQuad": {
+      "idResource": "MeshQuad|2022-10-11T14:29:27.368Z|20770",
+      "name": "MeshQuad"
+    }
+  },
+  "TextureImage|2022-10-11T14:43:18.342Z|06710": {
+    "ƒ.TextureImage": {
+      "url": "Texturen/brick_texture.png",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2022-10-11T14:43:18.342Z|06710",
+        "name": "brick_texture.png",
+        "mipmap": "CRISP"
+      }
+    }
+  },
+  "Material|2022-10-11T14:43:33.972Z|48518": {
+    "ƒ.Material": {
+      "name": "brick",
+      "idResource": "Material|2022-10-11T14:43:33.972Z|48518",
+      "shader": "ShaderFlatTextured",
+      "coat": {
+        "ƒ.CoatRemissiveTextured": {
+          "color": "[1, 1, 1, 1]",
+          "idTexture": "TextureImage|2022-10-11T14:43:18.342Z|06710",
+          "diffuse": 1,
+          "specular": 0
+        }
+      }
+    }
+  },
+  "Graph|2022-10-11T14:44:31.383Z|80421": {
+    "ƒ.Graph": {
+      "name": "bricks",
+      "active": true,
+      "components": {
+        "ComponentMesh": [
+          {
+            "ƒ.ComponentMesh": {
+              "idMesh": "MeshCube|2022-10-11T14:25:31.393Z|79785",
+              "pivot": {
+                "translation": "[1.999999761581421, 3, 0]",
+                "rotation": "[0, 0, 0]",
+                "scaling": "[1, 1, 1]"
+              },
+              "Component": {
+                "active": true
+              }
+            }
+          }
+        ],
+        "ComponentMaterial": [
+          {
+            "ƒ.ComponentMaterial": {
+              "sortForAlpha": false,
+              "clrPrimary": "[1, 1, 1, 1]",
+              "clrSecondary": "[1, 1, 1, 1]",
+              "pivot": {
+                "translation": "[0, 0]",
+                "rotation": 0,
+                "scaling": "[1, 1]"
+              },
+              "Component": {
+                "active": true
+              },
+              "idMaterial": "Material|2022-10-11T14:43:33.972Z|48518"
+            }
+          }
+        ]
+      },
+      "children": [],
+      "idResource": "Graph|2022-10-11T14:44:31.383Z|80421",
+      "type": "Graph"
+    }
+  },
+  "Graph|2022-10-11T14:48:24.129Z|46578": {
+    "ƒ.Graph": {
+      "name": "Mario",
+      "active": true,
+      "components": {},
+      "children": [],
+      "idResource": "Graph|2022-10-11T14:48:24.129Z|46578",
+      "type": "Graph"
+    }
+  },
+  "Material|2022-10-11T14:48:40.048Z|54905": {
+    "ƒ.Material": {
+      "name": "shadermario",
+      "idResource": "Material|2022-10-11T14:48:40.048Z|54905",
+      "shader": "ShaderFlatTextured",
+      "coat": {
+        "ƒ.CoatRemissiveTextured": {
+          "color": "[1, 1, 1, 1]",
+          "idTexture": "TextureImage|2022-10-11T14:51:17.062Z|30038",
+          "diffuse": 1,
+          "specular": 0
+        }
+      }
+    }
+  },
+  "TextureImage|2022-10-11T14:51:17.062Z|30038": {
+    "ƒ.TextureImage": {
+      "url": "Texturen/mario.gif",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2022-10-11T14:51:17.062Z|30038",
+        "name": "mario.gif",
+        "mipmap": "CRISP"
+      }
+    }
+  }
+}
