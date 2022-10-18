@@ -49,19 +49,28 @@ namespace Script {
     ƒ.Loop.start(ƒ.LOOP_MODE.TIME_GAME, 100);
 
   }
-let facingRight: boolean ;
+let facingRight: boolean;
+facingRight=true;
   function update(_event: Event): void {
     // ƒ.Physics.simulate();
 
     if(ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.D])){
       tempPos += 0.1;
       marioNode.getComponent(ƒ.ComponentTransform).mtxLocal.translateX(0.01);
-      facingRight=true;
+      
+      if(facingRight==false){
+        marioSpriteNode.getComponent(ƒ.ComponentTransform).mtxLocal.rotateY(180);
+        facingRight=true;
+      }
     }
-    if(ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.S])){
+    else if(ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.A])){
       tempPos += 0.1;
       marioNode.getComponent(ƒ.ComponentTransform).mtxLocal.translateX(-0.01);
-      facingRight=false;
+      if(facingRight==true){
+        marioSpriteNode.getComponent(ƒ.ComponentTransform).mtxLocal.rotateY(180);
+        facingRight=false;
+      }
+      
     }
      else{
      marioSpriteNode.showFrame(2);
