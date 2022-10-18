@@ -5,7 +5,8 @@ namespace Script {
 
   let viewport: ƒ.Viewport;
   let marioSpriteNode: ƒAid.NodeSprite;
-
+  let marioSpeed : number =3 ;
+  let marioSprintSpeed:number = marioSpeed+2.5;
   document.addEventListener("interactiveViewportStarted", <EventListener>start);
  
   let marioNode: ƒ.Node;
@@ -16,7 +17,7 @@ namespace Script {
     ƒ.Loop.start();  // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
     console.log(viewport);
     let branch: ƒ.Node = viewport.getBranch();
-    console.log(branch);
+
     marioNode = branch.getChildrenByName("MarioTransform")[0];
 
    
@@ -45,7 +46,8 @@ namespace Script {
     marioNode.addChild(marioSpriteNode);
     viewport.draw();
 
-    ƒ.Loop.start(ƒ.LOOP_MODE.TIME_GAME, 100);
+    
+    ƒ.Loop.start(ƒ.LOOP_MODE.TIME_GAME, 30);
 
   }
 let facingRight: boolean;
@@ -54,15 +56,23 @@ facingRight=true;
     // ƒ.Physics.simulate();
 
     if(ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.D])){
-      marioNode.getComponent(ƒ.ComponentTransform).mtxLocal.translateX(0.01);
-      
+      if(ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.SHIFT_LEFT])) {
+        marioNode.getComponent(ƒ.ComponentTransform).mtxLocal.translateX(ƒ.Loop.timeFrameGame/1000 * marioSprintSpeed);
+      }
+     else{ marioNode.getComponent(ƒ.ComponentTransform).mtxLocal.translateX(ƒ.Loop.timeFrameGame/1000 * marioSpeed);
+    }
       if(facingRight==false){
         marioSpriteNode.getComponent(ƒ.ComponentTransform).mtxLocal.rotateY(180);
         facingRight=true;
       }
     }
     else if(ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.A])){
-      marioNode.getComponent(ƒ.ComponentTransform).mtxLocal.translateX(-0.01);
+      if(ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.SHIFT_LEFT])) {
+        marioNode.getComponent(ƒ.ComponentTransform).mtxLocal.translateX(-ƒ.Loop.timeFrameGame/1000 * marioSprintSpeed);
+      }
+      else{
+      marioNode.getComponent(ƒ.ComponentTransform).mtxLocal.translateX(-ƒ.Loop.timeFrameGame/1000 * marioSpeed);
+    }
       if(facingRight==true){
         marioSpriteNode.getComponent(ƒ.ComponentTransform).mtxLocal.rotateY(180);
         facingRight=false;
