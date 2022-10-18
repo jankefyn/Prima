@@ -56,7 +56,6 @@ var Script;
         console.log("Mario:", marioNode);
         hndLoad(_event);
     }
-    let tempPos = 1;
     async function hndLoad(_event) {
         let imgSpriteSheet = new ƒ.TextureImage();
         await imgSpriteSheet.load("./Texturen/mariowalkx16.gif");
@@ -79,7 +78,6 @@ var Script;
     function update(_event) {
         // ƒ.Physics.simulate();
         if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.D])) {
-            tempPos += 0.1;
             marioNode.getComponent(ƒ.ComponentTransform).mtxLocal.translateX(0.01);
             if (facingRight == false) {
                 marioSpriteNode.getComponent(ƒ.ComponentTransform).mtxLocal.rotateY(180);
@@ -87,7 +85,6 @@ var Script;
             }
         }
         else if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.A])) {
-            tempPos += 0.1;
             marioNode.getComponent(ƒ.ComponentTransform).mtxLocal.translateX(-0.01);
             if (facingRight == true) {
                 marioSpriteNode.getComponent(ƒ.ComponentTransform).mtxLocal.rotateY(180);

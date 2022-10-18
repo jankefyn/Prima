@@ -25,7 +25,6 @@ namespace Script {
     hndLoad(_event);
   }
 
-  let tempPos: number = 1;
  
 
   async function hndLoad(_event: Event): Promise<void> {
@@ -55,7 +54,6 @@ facingRight=true;
     // ƒ.Physics.simulate();
 
     if(ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.D])){
-      tempPos += 0.1;
       marioNode.getComponent(ƒ.ComponentTransform).mtxLocal.translateX(0.01);
       
       if(facingRight==false){
@@ -64,7 +62,6 @@ facingRight=true;
       }
     }
     else if(ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.A])){
-      tempPos += 0.1;
       marioNode.getComponent(ƒ.ComponentTransform).mtxLocal.translateX(-0.01);
       if(facingRight==true){
         marioSpriteNode.getComponent(ƒ.ComponentTransform).mtxLocal.rotateY(180);
