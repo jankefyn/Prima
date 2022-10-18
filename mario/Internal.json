@@ -54,10 +54,34 @@
           }
         },
         {
-          "ƒ.GraphInstance": {
-            "deserializeFromSource": true,
-            "name": "Mario",
-            "idSource": "Graph|2022-10-11T14:48:24.129Z|46578"
+          "ƒ.Node": {
+            "name": "MarioTransform",
+            "active": true,
+            "components": {
+              "ComponentTransform": [
+                {
+                  "ƒ.ComponentTransform": {
+                    "local": {
+                      "translation": "[0, 0, 0]",
+                      "rotation": "[0, 0, 0]",
+                      "scaling": "[1, 1, 1]"
+                    },
+                    "Component": {
+                      "active": true
+                    }
+                  }
+                }
+              ]
+            },
+            "children": [
+              {
+                "ƒ.GraphInstance": {
+                  "deserializeFromSource": true,
+                  "name": "Mario",
+                  "idSource": "Graph|2022-10-11T14:48:24.129Z|46578"
+                }
+              }
+            ]
           }
         }
       ],
