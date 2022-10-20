@@ -80,7 +80,7 @@ facingRight=true;
       
     }
      else{
-     marioSpriteNode.showFrame(2);
+     marioSpriteNode.showFrame(1);
      }
     ƒ.AudioManager.default.update();
     viewport.draw();
