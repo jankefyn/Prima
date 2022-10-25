@@ -43,8 +43,13 @@ var Script;
     ƒ.Debug.info("Main Program Template running!");
     let viewport;
     let marioSpriteNode;
-    let marioSpeed = 3;
-    let marioSprintSpeed = marioSpeed + 2.5;
+    let SpeedMario = 3;
+    let SpeedSprintMario = SpeedMario + 2.5;
+    let facingRight;
+    let distanceY = 0;
+    let gravitation = 0.001;
+    let isJumping = false;
+    let alreadyJumped = false;
     document.addEventListener("interactiveViewportStarted", start);
     let marioNode;
     function start(_event) {
@@ -67,23 +72,44 @@ var Script;
         marioSpriteNode.addComponent(new ƒ.ComponentTransform(new ƒ.Matrix4x4()));
         marioSpriteNode.setAnimation(animation);
         marioSpriteNode.setFrameDirection(1);
-        marioSpriteNode.mtxLocal.translateY(+0.5);
+        marioSpriteNode.mtxLocal.translateY(0.5);
         marioSpriteNode.framerate = 12;
         marioNode.removeAllChildren();
         marioNode.addChild(marioSpriteNode);
         viewport.draw();
         ƒ.Loop.start(ƒ.LOOP_MODE.TIME_GAME, 30);
     }
-    let facingRight;
     facingRight = true;
     function update(_event) {
         // ƒ.Physics.simulate();
+        let pos = marioNode.mtxLocal.translation;
+        if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.SPACE]) && isJumping == false) {
+            console.log(alreadyJumped);
+            if (alreadyJumped == false) {
+                marioNode.mtxLocal.translateY(1);
+            }
+            alreadyJumped = true;
+            isJumping = true;
+            distanceY = (distanceY + gravitation) * ƒ.Loop.timeFrameGame / 1000;
+        }
+        else if (pos.y + distanceY > 1) {
+            marioNode.mtxLocal.translateY(-distanceY);
+        }
+        else {
+            distanceY = 0;
+            pos.y = 0;
+            marioNode.mtxLocal.translation = pos;
+            isJumping = false;
+        }
+        if (!ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.SPACE])) {
+            alreadyJumped = false;
+        }
         if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.D])) {
             if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.SHIFT_LEFT])) {
-                marioNode.getComponent(ƒ.ComponentTransform).mtxLocal.translateX(ƒ.Loop.timeFrameGame / 1000 * marioSprintSpeed);
+                marioNode.getComponent(ƒ.ComponentTransform).mtxLocal.translateX(ƒ.Loop.timeFrameGame / 1000 * SpeedSprintMario);
             }
             else {
-                marioNode.getComponent(ƒ.ComponentTransform).mtxLocal.translateX(ƒ.Loop.timeFrameGame / 1000 * marioSpeed);
+                marioNode.getComponent(ƒ.ComponentTransform).mtxLocal.translateX(ƒ.Loop.timeFrameGame / 1000 * SpeedMario);
             }
             if (facingRight == false) {
                 marioSpriteNode.getComponent(ƒ.ComponentTransform).mtxLocal.rotateY(180);
@@ -92,10 +118,10 @@ var Script;
         }
         else if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.A])) {
             if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.SHIFT_LEFT])) {
-                marioNode.getComponent(ƒ.ComponentTransform).mtxLocal.translateX(-ƒ.Loop.timeFrameGame / 1000 * marioSprintSpeed);
+                marioNode.getComponent(ƒ.ComponentTransform).mtxLocal.translateX(-ƒ.Loop.timeFrameGame / 1000 * SpeedSprintMario);
             }
             else {
-                marioNode.getComponent(ƒ.ComponentTransform).mtxLocal.translateX(-ƒ.Loop.timeFrameGame / 1000 * marioSpeed);
+                marioNode.getComponent(ƒ.ComponentTransform).mtxLocal.translateX(-ƒ.Loop.timeFrameGame / 1000 * SpeedMario);
             }
             if (facingRight == true) {
                 marioSpriteNode.getComponent(ƒ.ComponentTransform).mtxLocal.rotateY(180);
