@@ -45,24 +45,22 @@ var Script;
     let marioSpriteNode;
     let SpeedMario = 3;
     let SpeedSprintMario = SpeedMario + 2.5;
-    let facingRight;
-    let distanceY = 0;
-    let gravitation = 0.001;
+    let facingRight = true;
+    let velocityY = 0;
+    let gravitation = 0.1;
     let isJumping = false;
     let alreadyJumped = false;
-    document.addEventListener("interactiveViewportStarted", start);
     let marioNode;
+    document.addEventListener("interactiveViewportStarted", start);
     function start(_event) {
         viewport = _event.detail;
         ƒ.Loop.addEventListener("loopFrame" /* ƒ.EVENT.LOOP_FRAME */, update);
-        ƒ.Loop.start(); // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
-        console.log(viewport);
+        ƒ.Loop.start();
         let branch = viewport.getBranch();
         marioNode = branch.getChildrenByName("MarioTransform")[0];
-        console.log("Mario:", marioNode);
-        hndLoad(_event);
+        spriteSheets(_event);
     }
-    async function hndLoad(_event) {
+    async function spriteSheets(_event) {
         let imgSpriteSheet = new ƒ.TextureImage();
         await imgSpriteSheet.load("./Texturen/mariowalkx16.gif");
         let coat = new ƒ.CoatTextured(undefined, imgSpriteSheet);
@@ -77,26 +75,25 @@ var Script;
         marioNode.removeAllChildren();
         marioNode.addChild(marioSpriteNode);
         viewport.draw();
-        ƒ.Loop.start(ƒ.LOOP_MODE.TIME_GAME, 30);
     }
-    facingRight = true;
     function update(_event) {
         // ƒ.Physics.simulate();
+        let deltaTime = ƒ.Loop.timeFrameGame / 1000;
+        velocityY = velocityY + gravitation * deltaTime;
         let pos = marioNode.mtxLocal.translation;
         if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.SPACE]) && isJumping == false) {
-            console.log(alreadyJumped);
             if (alreadyJumped == false) {
-                marioNode.mtxLocal.translateY(1);
+                velocityY = 1;
+                marioNode.mtxLocal.translateY(velocityY);
             }
             alreadyJumped = true;
             isJumping = true;
-            distanceY = (distanceY + gravitation) * ƒ.Loop.timeFrameGame / 1000;
         }
-        else if (pos.y + distanceY > 1) {
-            marioNode.mtxLocal.translateY(-distanceY);
+        else if (pos.y + velocityY > 1) {
+            marioNode.mtxLocal.translateY(-velocityY);
         }
         else {
-            distanceY = 0;
+            velocityY = 0;
             pos.y = 0;
             marioNode.mtxLocal.translation = pos;
             isJumping = false;
