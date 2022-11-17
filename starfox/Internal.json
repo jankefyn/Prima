@@ -7,6 +7,20 @@
       "url": "spaceship/spaceship.obj"
     }
   },
+  "Material|2022-11-17T13:43:27.165Z|76683": {
+    "ƒ.Material": {
+      "name": "ShaderFlat",
+      "idResource": "Material|2022-11-17T13:43:27.165Z|76683",
+      "shader": "ShaderFlat",
+      "coat": {
+        "ƒ.CoatRemissive": {
+          "color": "[1, 1, 1, 1]",
+          "diffuse": 1,
+          "specular": 0
+        }
+      }
+    }
+  },
   "Graph|2022-11-17T13:18:36.382Z|89305": {
     "ƒ.Graph": {
       "name": "Level",
@@ -36,7 +50,24 @@
                 "scaling": "[1, 1, 1]"
               },
               "light": {
-                "ƒ.LightAmbient": {
+                "ƒ.LightDirectional": {
+                  "color": "[1, 1, 1, 1]"
+                }
+              },
+              "Component": {
+                "active": true
+              }
+            }
+          },
+          {
+            "ƒ.ComponentLight": {
+              "pivot": {
+                "translation": "[6, -4, 0]",
+                "rotation": "[0, 0, 0]",
+                "scaling": "[1, 1, 1]"
+              },
+              "light": {
+                "ƒ.LightDirectional": {
                   "color": "[1, 1, 1, 1]"
                 }
               },
@@ -60,7 +91,7 @@
               "Component": {
                 "active": true
               },
-              "idMaterial": "Material|2022-11-17T13:30:08.290Z|33316"
+              "idMaterial": "Material|2022-11-17T13:43:27.165Z|76683"
             }
           }
         ]
@@ -68,20 +99,6 @@
       "children": [],
       "idResource": "Graph|2022-11-17T13:18:36.382Z|89305",
       "type": "Graph"
-    }
-  },
-  "Material|2022-11-17T13:30:08.290Z|33316": {
-    "ƒ.Material": {
-      "name": "ShaderFlat",
-      "idResource": "Material|2022-11-17T13:30:08.290Z|33316",
-      "shader": "ShaderFlat",
-      "coat": {
-        "ƒ.CoatRemissive": {
-          "color": "[1, 1, 1, 1]",
-          "diffuse": 1,
-          "specular": 0
-        }
-      }
     }
   }
 }
