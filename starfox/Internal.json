@@ -1,1 +1,55 @@
-{}
+{
+  "MeshObj|2022-11-17T13:18:22.329Z|11998": {
+    "ƒ.MeshObj": {
+      "idResource": "MeshObj|2022-11-17T13:18:22.329Z|11998",
+      "name": "spaceship.obj",
+      "type": "MeshObj",
+      "url": "spaceship/spaceship.obj"
+    }
+  },
+  "Graph|2022-11-17T13:18:36.382Z|89305": {
+    "ƒ.Graph": {
+      "name": "Level",
+      "active": true,
+      "components": {
+        "ComponentMesh": [
+          {
+            "ƒ.ComponentMesh": {
+              "idMesh": "MeshObj|2022-11-17T13:18:22.329Z|11998",
+              "pivot": {
+                "translation": "[0, 0, 0]",
+                "rotation": "[0, 0, 0]",
+                "scaling": "[1, 1, 1]"
+              },
+              "Component": {
+                "active": true
+              }
+            }
+          }
+        ],
+        "ComponentLight": [
+          {
+            "ƒ.ComponentLight": {
+              "pivot": {
+                "translation": "[0, 0, 0]",
+                "rotation": "[0, 0, 0]",
+                "scaling": "[1, 1, 1]"
+              },
+              "light": {
+                "ƒ.LightAmbient": {
+                  "color": "[1, 1, 1, 1]"
+                }
+              },
+              "Component": {
+                "active": true
+              }
+            }
+          }
+        ]
+      },
+      "children": [],
+      "idResource": "Graph|2022-11-17T13:18:36.382Z|89305",
+      "type": "Graph"
+    }
+  }
+}
