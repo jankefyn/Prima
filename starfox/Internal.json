@@ -31,7 +31,7 @@
             "ƒ.ComponentMesh": {
               "idMesh": "MeshObj|2022-11-17T13:18:22.329Z|11998",
               "pivot": {
-                "translation": "[0, 0, 0]",
+                "translation": "[0, 10, 0]",
                 "rotation": "[0, 0, 0]",
                 "scaling": "[1, 1, 1]"
               },
@@ -96,9 +96,56 @@
           }
         ]
       },
-      "children": [],
+      "children": [
+        {
+          "ƒ.GraphInstance": {
+            "deserializeFromSource": true,
+            "name": "terrain",
+            "idSource": "Graph|2022-11-17T14:20:15.512Z|44644"
+          }
+        }
+      ],
       "idResource": "Graph|2022-11-17T13:18:36.382Z|89305",
       "type": "Graph"
+    }
+  },
+  "MeshTerrain|2022-11-17T14:13:26.057Z|51280": {
+    "ƒ.MeshTerrain": {
+      "idResource": "MeshTerrain|2022-11-17T14:13:26.057Z|51280",
+      "name": "MeshTerrain",
+      "type": "MeshTerrain",
+      "seed": 1,
+      "scale": "[-20, 83]",
+      "resolution": "[3000, 1]"
+    }
+  },
+  "MeshCube|2022-11-17T14:16:34.233Z|98342": {
+    "ƒ.MeshCube": {
+      "idResource": "MeshCube|2022-11-17T14:16:34.233Z|98342",
+      "name": "MeshCube",
+      "type": "MeshCube"
+    }
+  },
+  "Graph|2022-11-17T14:20:15.512Z|44644": {
+    "ƒ.Graph": {
+      "name": "NewGraph",
+      "active": true,
+      "components": {},
+      "children": [],
+      "idResource": "Graph|2022-11-17T14:20:15.512Z|44644",
+      "type": "Graph"
+    }
+  },
+  "Material|2022-11-17T14:22:57.801Z|14002": {
+    "ƒ.Material": {
+      "name": "ShaderLit",
+      "idResource": "Material|2022-11-17T14:22:57.801Z|14002",
+      "shader": "ShaderLit",
+      "coat": {
+        "ƒ.CoatColored": {
+          "color": "[1, 1, 1, 1]"
+        }
+      }
     }
   }
 }
