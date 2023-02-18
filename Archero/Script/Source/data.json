@@ -1,0 +1,6 @@
+{
+    "bulletspeed": "10",
+    "attackspeed":"1000",
+    "enemyAttackspeed":"1000",
+    "enemyBulletspeed":"5"
+}
