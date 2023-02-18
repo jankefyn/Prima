@@ -205,7 +205,7 @@ namespace Archero {
   }
   function spawnEnenys(): void {
     for (let i = 0; i < amountEnemys; i++) {
-      let enemyNode = new EnemyNode("enemy" + i, new ƒ.Vector3(Math.floor(Math.random() * (12 - 10 + 1) + 10), 0, Math.floor(Math.random() * (15 + 1))));
+      let enemyNode = new EnemyNode("enemy" + i, new ƒ.Vector3(Math.floor(Math.random() * (12 - 10 + 1) + 10), 0, Math.floor(Math.random() * (7 + 1))));
       enemyNode.addComponent(new StateMachine());
       viewport.getBranch().addChild(enemyNode);
       enemyArray.push(enemyNode);
