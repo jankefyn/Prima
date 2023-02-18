@@ -5,6 +5,7 @@ namespace Archero {
     export class GameState extends ƒ.Mutable {
       protected reduceMutator(_mutator: ƒ.Mutator): void {/* */}
       public liveAmount: number = 100;
+      public text:string="";
       private controller: ƒui.Controller;
 
       constructor() {

@@ -158,6 +158,7 @@ var Archero;
     class GameState extends ƒ.Mutable {
         reduceMutator(_mutator) { }
         liveAmount = 100;
+        text = "";
         controller;
         constructor() {
             super();
@@ -189,11 +190,12 @@ var Archero;
     let amountEnemys = 1;
     let playerBulletDirection = [];
     let characterNode;
-    let enemyAngleRad;
-    let enemyAngleDeg;
-    let playerAngleRad;
-    let playerAngleDeg;
-    let turnAngle;
+    /* let enemyAngleRad: number;
+     let enemyAngleDeg: number;
+     let playerAngleRad: number;
+     let playerAngleDeg: number;
+     let turnAngle: number;
+     */
     let target;
     Archero.enemyBulletImage = new ƒ.TextureImage();
     Archero.shootingTimeOut = false;
@@ -254,6 +256,12 @@ var Archero;
         getClosestEnemy();
     }
     function update(_event) {
+        if (Archero.gameState.liveAmount < 10) {
+            console.log("ich bin hier");
+            Archero.gameState.liveAmount = 0;
+            Archero.gameState.text = "YOU ARE DEAD , RELOAD SITE TO START AGAIN";
+            return;
+        }
         // ƒ.Physics.simulate();  // if physics is included and used
         Archero.transformcharacter = Archero.character.getComponent(ƒ.ComponentTransform);
         getClosestEnemy();
@@ -267,17 +275,19 @@ var Archero;
             focusTarget();
             Archero.viewport.draw();
             //console.log(closestEnemy);
-            enemyAngleRad = Math.atan2(target.mtxLocal.translation.x, target.mtxLocal.translation.z);
-            enemyAngleDeg = enemyAngleRad * (180.0 / Math.PI);
-            playerAngleRad = Math.atan2(Archero.transformcharacter.mtxLocal.translation.x, Archero.transformcharacter.mtxLocal.translation.z);
-            playerAngleDeg = playerAngleRad * (180.0 / Math.PI);
-            if (enemyAngleDeg < playerAngleDeg) {
-                turnAngle = playerAngleDeg - enemyAngleDeg;
-            }
-            else {
-                turnAngle = enemyAngleDeg - playerAngleDeg;
-            }
-            characterNode.cmpTransform.mtxLocal.rotation = new ƒ.Vector3(90, turnAngle, 0);
+            /* enemyAngleRad = Math.atan2(target.mtxLocal.translation.x, target.mtxLocal.translation.z);
+             enemyAngleDeg = enemyAngleRad * (180.0 / Math.PI);
+             playerAngleRad = Math.atan2(transformcharacter.mtxLocal.translation.x, transformcharacter.mtxLocal.translation.z);
+             playerAngleDeg = playerAngleRad * (180.0 / Math.PI);
+             if (enemyAngleDeg < playerAngleDeg) {
+               turnAngle = playerAngleDeg - enemyAngleDeg;
+             } else {
+               turnAngle = enemyAngleDeg - playerAngleDeg;
+             }
+       
+       
+             characterNode.cmpTransform.mtxLocal.rotation = new ƒ.Vector3(90, turnAngle, 0);
+       */
             ƒ.AudioManager.default.update();
             if (ƒ.Keyboard.isPressedCombo([ƒ.KEYBOARD_CODE.D, ƒ.KEYBOARD_CODE.W])) {
                 playerScript.walkRightForward();

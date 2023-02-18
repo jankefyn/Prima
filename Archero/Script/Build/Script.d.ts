@@ -38,6 +38,7 @@ declare namespace Archero {
     class GameState extends ƒ.Mutable {
         protected reduceMutator(_mutator: ƒ.Mutator): void;
         liveAmount: number;
+        text: string;
         private controller;
         constructor();
     }

@@ -20,11 +20,12 @@ namespace Archero {
   let amountEnemys: number = 1;
   let playerBulletDirection: ƒ.Vector3[] = [];
   let characterNode: CharacterNode;
-  let enemyAngleRad: number;
+ /* let enemyAngleRad: number;
   let enemyAngleDeg: number;
   let playerAngleRad: number;
   let playerAngleDeg: number;
   let turnAngle: number;
+  */
   let target: ƒ.ComponentTransform;
 
   export let enemyBulletImage: ƒ.TextureImage = new ƒ.TextureImage();
@@ -101,6 +102,12 @@ namespace Archero {
   }
 
   function update(_event: Event): void {
+    if (gameState.liveAmount < 10) {
+      console.log("ich bin hier");
+      gameState.liveAmount = 0;
+      gameState.text = "YOU ARE DEAD , RELOAD SITE TO START AGAIN";
+      return
+    }
     // ƒ.Physics.simulate();  // if physics is included and used
     transformcharacter = character.getComponent(ƒ.ComponentTransform);
     getClosestEnemy();
@@ -115,9 +122,9 @@ namespace Archero {
       viewport.draw();
       //console.log(closestEnemy);
 
+      
 
-
-      enemyAngleRad = Math.atan2(target.mtxLocal.translation.x, target.mtxLocal.translation.z);
+     /* enemyAngleRad = Math.atan2(target.mtxLocal.translation.x, target.mtxLocal.translation.z);
       enemyAngleDeg = enemyAngleRad * (180.0 / Math.PI);
       playerAngleRad = Math.atan2(transformcharacter.mtxLocal.translation.x, transformcharacter.mtxLocal.translation.z);
       playerAngleDeg = playerAngleRad * (180.0 / Math.PI);
@@ -129,7 +136,7 @@ namespace Archero {
 
 
       characterNode.cmpTransform.mtxLocal.rotation = new ƒ.Vector3(90, turnAngle, 0);
-
+*/
       ƒ.AudioManager.default.update();
       if (ƒ.Keyboard.isPressedCombo([ƒ.KEYBOARD_CODE.D, ƒ.KEYBOARD_CODE.W])) {
         playerScript.walkRightForward();
@@ -169,14 +176,14 @@ namespace Archero {
       }
       for (let i: number = 0; i < currentBullets.length; i++) {
 
-          playerBulletDirection[i].normalize();
-          playerBulletDirection[i] = ƒ.Vector3.SCALE(playerBulletDirection[i], ƒ.Loop.timeFrameGame / 1000);
-          playerBulletDirection[i].scale(bulletspeed);
-          if(playerBulletDirection[i].magnitude !> 0){
-            currentBullets[i].cmpTransform.mtxLocal.translateX(((bulletspeed * ƒ.Loop.timeFrameGame / 1000) / 2));
-          }    
-          currentBullets[i].cmpTransform.mtxLocal.translate(playerBulletDirection[i]);  
-        
+        playerBulletDirection[i].normalize();
+        playerBulletDirection[i] = ƒ.Vector3.SCALE(playerBulletDirection[i], ƒ.Loop.timeFrameGame / 1000);
+        playerBulletDirection[i].scale(bulletspeed);
+        if (playerBulletDirection[i].magnitude! > 0) {
+          currentBullets[i].cmpTransform.mtxLocal.translateX(((bulletspeed * ƒ.Loop.timeFrameGame / 1000) / 2));
+        }
+        currentBullets[i].cmpTransform.mtxLocal.translate(playerBulletDirection[i]);
+
 
         //currentBullets[i].cmpTransform.mtxLocal.translateX(bulletspeed * ƒ.Loop.timeFrameGame / 1000);
       }
@@ -226,7 +233,7 @@ namespace Archero {
       nodeCube.addComponent(componentMesh);
       nodeCube.addComponent(materialComp);
       nodeCube.addComponent(new ƒ.ComponentTransform());
-  
+
       viewport.getBranch().addChild(nodeCube);
       currentBullets.push(nodeCube)
       currentBullets[bullet_counter].cmpTransform.mtxLocal = transformcharacter.mtxLocal.clone;
@@ -240,7 +247,7 @@ namespace Archero {
       if (!closestEnemy) {
         return;
       }
-      
+
       setTimeout(() => {
         shootingTimeOut = false;
         //characterNode.changeAnim("shoot");
